@@ -2,15 +2,24 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
+import { SharedModule } from './shared/shared.module';
+import { ServersModule } from './servers/servers.module';
+import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { UsersModule } from './users/users.module';
+import { serverService } from './services/server.service';
+import { AppRoutingModule } from './app.routing';
+
 
 @NgModule({
   declarations: [
     AppComponent
+
   ],
   imports: [
-    BrowserModule
+    CommonModule,BrowserModule,RouterModule,ServersModule,SharedModule,UsersModule,AppRoutingModule
   ],
-  providers: [],
+  providers: [serverService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
