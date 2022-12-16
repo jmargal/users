@@ -9,6 +9,7 @@ import { CommonModule } from '@angular/common';
 import { UsersModule } from './users/users.module';
 import { serverService } from './services/server.service';
 import { AppRoutingModule } from './app.routing';
+import { authService } from './services/auth.service';
 
 
 @NgModule({
@@ -19,7 +20,7 @@ import { AppRoutingModule } from './app.routing';
   imports: [
     CommonModule,BrowserModule,RouterModule,ServersModule,SharedModule,UsersModule,AppRoutingModule
   ],
-  providers: [serverService],
+  providers: [serverService,authService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
