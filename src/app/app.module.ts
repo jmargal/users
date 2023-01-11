@@ -10,17 +10,20 @@ import { UsersModule } from './users/users.module';
 import { serverService } from './services/server.service';
 import { AppRoutingModule } from './app.routing';
 import { authService } from './services/auth.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HomeComponent } from './home/home.component';
+import { AuthGuardGuard } from './auth-guard.guard';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,HomeComponent
 
   ],
   imports: [
-    CommonModule,BrowserModule,RouterModule,ServersModule,SharedModule,UsersModule,AppRoutingModule
+    CommonModule,BrowserModule,RouterModule,ServersModule,SharedModule,UsersModule,AppRoutingModule,FormsModule,ReactiveFormsModule
   ],
-  providers: [serverService,authService],
+  providers: [serverService,authService,AuthGuardGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,3 +1,17 @@
 <h1>Servers and users App</h1>
 
-<button class="btn btn-dark" (click)="onLoadServers(1)">Load server 1</button>
+<form  (ngSubmit)="onLogin()">
+    <div class="form-group">
+      <label for="uname">User name</label>
+      <input type="text" class="form-control" name="uname" id="uname"  [(ngModel)]="name" placeholder="Enter name">
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" class="form-control" id="password" name="password"  [(ngModel)]="password" placeholder="Password">
+    </div><br>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  <br>
+
+  <button class="btn btn-primary" (click)="onLogout()">Logout</button>
+

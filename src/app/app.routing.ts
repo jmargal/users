@@ -7,6 +7,7 @@ import { UserComponent } from './users/user-component/user-component.component';
 import { UsersComponentComponent } from './users/users-component/users-component.component';
 import { ServerPadreComponent } from './servers/server-padre/server-padre.component';
 import { ServidorComponent } from './servers/servidor/servidor.component';
+import { AuthGuardGuard } from './auth-guard.guard';
 
 const routes: Routes = [
   {
@@ -16,11 +17,15 @@ const routes: Routes = [
   },
   {
     path: 'users',
+    canActivate:[AuthGuardGuard],
+    canActivateChild:[AuthGuardGuard],
     component: UsersComponentComponent,
   },
   { path: 'users/:id/:name', component: UserComponent },
   {
     path: 'servers',
+    canActivate:[AuthGuardGuard],
+    canActivateChild:[AuthGuardGuard],
     component: ServerPadreComponent,
     children: [
       { path: ':id/edit', component: EditServerComponent },

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { serverService } from 'src/app/services/server.service';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 @Component({
   selector: 'app-edit-server',
@@ -10,12 +10,14 @@ export class EditServerComponent implements OnInit {
   server!: { id: number; name: string; status: string };
   serverName = '';
   serverStatus = '';
+  changeSaved=false;
 
   allowEdit = false;
 
   constructor(
     private serverService: serverService,
-    private actualRoute: ActivatedRoute
+    private actualRoute: ActivatedRoute,
+    private router:Router
   ) {}
 
   ngOnInit() {
@@ -32,5 +34,7 @@ export class EditServerComponent implements OnInit {
       name: this.serverName,
       status: this.serverStatus,
     });
+    this.changeSaved=true;
+    this.router.navigate(['../'], {relativeTo:this.actualRoute})
   }
 }
