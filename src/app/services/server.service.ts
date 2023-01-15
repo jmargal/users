@@ -31,7 +31,7 @@ export class serverService {
       (s) => {
         return s.id === id;
       }
-    );
+    ) ||{id:0,name:"unknown",status:"offline"};
     return server;
   }
 

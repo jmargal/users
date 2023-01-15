@@ -5,12 +5,13 @@ import {
 } from '@angular/router';
 import { authService } from './services/auth.service';
 import { CookieService } from 'ngx-cookie-service';
+import { userService } from './services/user.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthGuardGuard implements CanActivate {
-  constructor(private authService: authService, private router: Router,private cookSvc:CookieService) {}
+  constructor(private authService: authService, private router: Router,private cookSvc:CookieService,private userService:userService) {}
 
   // canActivate(
   //   route: ActivatedRouteSnapshot,
@@ -43,4 +44,6 @@ export class AuthGuardGuard implements CanActivate {
         return false;
       }
   }
+
+ 
 }

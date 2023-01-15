@@ -25,6 +25,6 @@ export class  ServerPadreComponent implements OnInit {
   onReload() {
     //this.router.navigate(['/servers']);
     //Esto seria una ruta relativa , y le decimos que es relativa a actualRoute que es la ruta en la que nos encontramos y hemos inyectado en el constructor
-    this.router.navigate(['/servers'], { relativeTo: this.actualRoute })
+    this.router.navigate(['/servers'], { relativeTo: this.actualRoute , queryParamsHandling: 'preserve' })
   }
 }
