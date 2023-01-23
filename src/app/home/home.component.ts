@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
-import { authService } from '../services/auth.service';
+import { authService } from '../auth.service';
 
 @Component({
   selector: 'app-home',
@@ -19,14 +19,17 @@ export class HomeComponent implements OnInit {
     private cookieSvc: CookieService,
   ) {}
   ngOnInit(): void {
-    if(this.cookieSvc.get('login')==='true'){
-      this.isLoggedIn=true;
-    }
-    else{
-      this.isLoggedIn=false;
-    }
-
+    this.authservice.isAuthenticated().subscribe({
+      next: (resp) =>{
+        if(resp){
+          this.isLoggedIn=true;
+        }
+        else{
+          this.isLoggedIn=false;
+        }
+      }})
   }
+
 
   onLoadServers(id: number) {
     //Los parametros que se le pasan primero son los que van en la ruta
@@ -38,7 +41,12 @@ export class HomeComponent implements OnInit {
   }
 
   onLogin() {
-    this.authservice.login(this.name, this.password);
+    this.authservice.login(this.name, this.password)
+    .subscribe( resp => {
+      if (resp){
+        this.isLoggedIn=true;
+      }
+    })
   }
 
   onLogout() {

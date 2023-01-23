@@ -20,6 +20,7 @@ export class  ServerPadreComponent implements OnInit {
   
   ngOnInit(): void {
     this.serverList = this.serverService.lista
+    console.log(this.serverList)
   }
 
   onReload() {

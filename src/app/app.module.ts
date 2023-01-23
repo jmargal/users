@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
 import { UsersModule } from './users/users.module';
 import { serverService } from './services/server.service';
 import { AppRoutingModule } from './app.routing';
-import { authService } from './services/auth.service';
+import { authService } from './auth.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { AuthGuardGuard } from './auth-guard.guard';

@@ -19,13 +19,17 @@ export class ServidorComponent implements OnInit {
 
   ngOnInit(): void {
     const id = +this.actualRoute.snapshot.params['id'];
-    this.server != this.serverService.getServer(id);
+    this.server = this.serverService.getServer(id);
 
-    this.actualRoute.params.subscribe({
-      next: (resp) => {
-        this.server = this.serverService.lista[resp['id']];
-      },
-    });
+    // this.actualRoute.params.subscribe({
+    //   next: (resp) => {
+    //     this.server = this.serverService.lista[resp['id']];
+    //   },
+    // });
+
+    this.actualRoute.params.subscribe((params: Params) => {
+      this.server = this.serverService.getServer(params['id']);
+    })
   }
 
   onEdit() {

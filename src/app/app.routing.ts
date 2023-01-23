@@ -8,6 +8,7 @@ import { UsersComponentComponent } from './users/users-component/users-component
 import { ServerPadreComponent } from './servers/server-padre/server-padre.component';
 import { ServidorComponent } from './servers/servidor/servidor.component';
 import { AuthGuardGuard } from './auth-guard.guard';
+import { RolGuardGuard } from './rol.guard';
 
 const routes: Routes = [
   {
@@ -28,7 +29,7 @@ const routes: Routes = [
     canActivateChild:[AuthGuardGuard],
     component: ServerPadreComponent,
     children: [
-      { path: ':id/edit', component: EditServerComponent },
+      { path: ':id/edit', canActivate:[RolGuardGuard], component: EditServerComponent },
       { path: ':id', component: ServidorComponent },
     ],
   },
