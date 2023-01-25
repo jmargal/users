@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
-import { CookieService } from 'ngx-cookie-service';
 import { authService } from '../auth.service';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-home',
@@ -16,16 +15,16 @@ export class HomeComponent implements OnInit {
   constructor(
     private router: Router,
     private authservice: authService,
-    private cookieSvc: CookieService,
   ) {}
   ngOnInit(): void {
     this.authservice.isAuthenticated().subscribe({
       next: (resp) =>{
+        //Si es true
         if(resp){
           this.isLoggedIn=true;
         }
         else{
-          this.isLoggedIn=false;
+          this.isLoggedIn=false
         }
       }})
   }
@@ -45,7 +44,15 @@ export class HomeComponent implements OnInit {
     .subscribe( resp => {
       if (resp){
         this.isLoggedIn=true;
-      }
+      }else{
+
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'User or password incorrect',
+
+      })
+    }
     })
   }
 

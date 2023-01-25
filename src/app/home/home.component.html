@@ -9,7 +9,7 @@
       <label for="password">Password</label>
       <input type="password" class="form-control" id="password" name="password"  [(ngModel)]="password" placeholder="Password">
     </div><br>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary" *ngIf="!isLoggedIn">Submit</button>
   </form>
   <br>
 
